@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'core/config/theme_config.dart';
 
 import 'app/modules/home/home_binding.dart';
 import 'app/modules/home/home_page.dart';
@@ -17,9 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeConfig(context).lightTheme,
       home: HomePage(),
       getPages: AppPages.pages,
       initialBinding: HomeBinding(),
