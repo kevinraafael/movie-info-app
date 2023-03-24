@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_info_app/app/modules/home_binding.dart';
-import 'package:movie_info_app/app/modules/home_page.dart';
-import 'package:movie_info_app/app/routes/app_pages.dart';
+
+import 'app/modules/home/home_binding.dart';
+import 'app/modules/home/home_page.dart';
+import 'app/routes/app_pages.dart';
 
 void main() {
   runApp(const MyApp());

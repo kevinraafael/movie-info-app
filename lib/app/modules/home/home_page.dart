@@ -12,25 +12,34 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CONTADOR'),
+        title: const Text(
+          'CONTADOR',
+          style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 24,
+              fontWeight: FontWeight.normal),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Você apertou X Vezes',
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
             ),
-            GetBuilder<HomeController>(
+            /*  GetBuilder<HomeController>(
               init: HomeController(), // INIT IT ONLY THE FIRST TIME
               builder: (_) => Text(
                 '${_.counter}',
               ),
-            )
-            // Obx(() => Text(
-            //       _homeController.counter.toString(),
-            //       style: Theme.of(context).textTheme.headlineMedium,
-            //     )),
+            ) */
+            Obx(() => Text(
+                  '${_homeController.counter.value}',
+                )),
           ],
         ),
       ),

@@ -1,12 +1,10 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  int _counter = 0;
+  var counter = 0.obs;
 
   void incrementCounter() {
-    _counter++;
+    counter++;
     update();
   }
-
-  int get counter => _counter;
 }
