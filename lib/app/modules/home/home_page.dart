@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_info_app/core/config/theme_config.dart';
-import 'package:movie_info_app/repositories/movies/movies_repository.dart';
+import '../../models/movie_model.dart';
+import '../../../core/config/theme_config.dart';
+import '../../../repositories/movies/movies_repository.dart';
 
 import '../../../core/theme/typography_theme.dart';
 
@@ -21,11 +22,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   final _homeController = Get.put(HomeController());
+  var movieModel = MovieModel();
+  test() async {
+    final MoviesRepository moviesRepository = Get.find();
+    movieModel = await moviesRepository.getMovie({});
+    movieModel;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final MoviesRepository movie = Get.find();
-    movie.getMovie({});
+    test();
     return Scaffold(
       appBar: AppBar(
         title: Text(
