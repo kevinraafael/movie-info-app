@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_info_app/core/config/theme_config.dart';
+import 'package:movie_info_app/repositories/movies/movies_repository.dart';
+
 import '../../../core/theme/typography_theme.dart';
 
 import 'home_controller.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   final _homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
+    final MoviesRepository movie = Get.find();
+    movie.getMovie({});
     return Scaffold(
       appBar: AppBar(
         title: Text(
