@@ -3,15 +3,14 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import '../interface/http_interface.dart';
+import 'http_interceptor.dart';
 
 class Http implements HttpInterface {
-  late final Dio _dio;
+  late final Dio dio;
 
-  // Http({required this._dio}) {
-  //   dio.interceptors.add(HttpInterceptor(dio: dio));
-  // }
-
-  Http(this._dio);
+  Http({required this.dio}) {
+    dio.interceptors.add(HttpInterceptor(dio: dio));
+  }
 
   final defaultError = {
     "code": "INTERNAL_SERVER_ERROR",
@@ -25,7 +24,7 @@ class Http implements HttpInterface {
       {required Map<String, dynamic> queryParameters}) async {
     // TODO: implement get
     try {
-      return await _dio.get(endpoint, queryParameters: queryParameters);
+      return await dio.get(endpoint, queryParameters: queryParameters);
     } on DioError catch (e) {
       if (e.response == null) {
         throw (defaultError);

@@ -5,11 +5,10 @@ import '../../models/movie_model.dart';
 import '../../core/config/theme_config.dart';
 import '../../repositories/movies/movies_repository.dart';
 
-
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   var movieModel = MovieModel();
   test() async {
     final MoviesRepository moviesRepository = Get.find();
-    movieModel = await moviesRepository.getMovie({});
+    movieModel = await moviesRepository.getMovie(5);
     movieModel;
   }
 
