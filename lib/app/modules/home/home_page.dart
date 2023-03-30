@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../core/theme/typography_theme.dart';
 import '../../models/movie_model.dart';
-import '../../../core/config/theme_config.dart';
-import '../../../repositories/movies/movies_repository.dart';
+import '../../core/config/theme_config.dart';
+import '../../repositories/movies/movies_repository.dart';
 
-import '../../../core/theme/typography_theme.dart';
 
 import 'home_controller.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import '../../app/models/movie_model.dart';
+import '../../models/movie_model.dart';
 import '../../core/interface/http_interface.dart';
 
 class MoviesRepository {

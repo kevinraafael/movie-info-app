@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/core/theme/typography_theme.dart';
 
 import '../theme/colors_theme.dart';
+import '../theme/typography_theme.dart';
 
 class ThemeConfig {
   ThemeConfig(this.context);

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
-import '../../../core/config/http.dart';
-import '../../../core/interface/http_interface.dart';
-import '../../../repositories/movies/movies_repository.dart';
+import '../../core/config/http.dart';
+import '../../core/interface/http_interface.dart';
+import '../../repositories/movies/movies_repository.dart';
 import 'home_controller.dart';
 
 class HomeBinding extends Bindings {

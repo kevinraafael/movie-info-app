@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+
 import '../interface/http_interface.dart';
-import 'http_interceptor.dart';
 
 class Http implements HttpInterface {
   late final Dio _dio;
