@@ -24,7 +24,8 @@ class _HomePageState extends State<HomePage> {
   var movieModel = MovieModel();
   test() async {
     final MoviesRepository moviesRepository = Get.find();
-    movieModel = await moviesRepository.getMovie(5);
+    movieModel = await moviesRepository.getMovieInfo(5);
+    await moviesRepository.getMovieImage();
     movieModel;
   }
 

@@ -1,20 +1,41 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
+import '../../core/config/http_interceptor.dart';
+
 import '../../models/movie_model.dart';
-import '../../core/interface/http_interface.dart';
 
 class MoviesRepository {
-  final HttpInterface http;
+  final Dio dioMovie;
+  final Dio dioImage;
 
-  MoviesRepository({required this.http});
+  MoviesRepository({
+    required this.dioMovie,
+    required this.dioImage,
+  }) {
+    dioMovie.interceptors.add(HttpInterceptor(dio: dioMovie));
+  }
 
-  Future getMovie(int movieId) async {
+  Future getMovieInfo(int movieId) async {
     try {
-      var response = await http.get(
+      var response = await dioMovie.get(
         '/movie/$movieId?',
         queryParameters: {},
       );
       return MovieModel.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future getMovieImage() async {
+    try {
+      var response = await dioImage.get(
+        '',
+        queryParameters: {},
+      );
+      log(response.data);
+      return (response.data);
     } catch (e) {
       log(e.toString());
     }
