@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_info_app/app/models/popular_movies_model.dart';
 import '../../core/theme/typography_theme.dart';
 import '../../models/movie_model.dart';
 import '../../core/config/theme_config.dart';
@@ -20,13 +21,17 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  String imageTest = '';
   final _homeController = Get.put(HomeController());
   var movieModel = MovieModel();
+  var popularMovies = PopularMoviesModel();
   test() async {
     final MoviesRepository moviesRepository = Get.find();
-    movieModel = await moviesRepository.getMovieInfo(5);
-    await moviesRepository.getMovieImage();
+    movieModel = await moviesRepository.getMovieInfo(100088);
+    //Traz a imagem imageTest = await moviesRepository.getMovieImage();
     movieModel;
+    popularMovies = await moviesRepository.getPopularMovies();
+    popularMovies;
   }
 
   @override
@@ -91,6 +96,16 @@ class _HomePageState extends State<HomePage> {
                     Icons.search,
                   ),
                 ],
+              ),
+            ),
+            const SizedBox(
+              height: 21,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.network(
+                'https://image.tmdb.org/t/p/w200/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg',
+                fit: BoxFit.cover,
               ),
             )
           ],
