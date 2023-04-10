@@ -33,7 +33,7 @@ class MovieModel {
     title = json['title'];
     overview = json['overview'];
     posterPath = json['poster_path'];
-    voteAverage = json['vote_average'];
+    voteAverage = double.tryParse(json['vote_average'].toString());
     runtime = json['runtime'];
     releaseDate = json['release_date'];
     backdropPath = json['backdrop_path'];

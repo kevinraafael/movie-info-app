@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     movieModel = await moviesRepository.getMovieInfo(100088);
     //Traz a imagem imageTest = await moviesRepository.getMovieImage();
     movieModel;
-    popularMovies = await moviesRepository.getPopularMovies();
+
     popularMovies;
   }
 
@@ -101,13 +101,29 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 21,
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                'https://image.tmdb.org/t/p/w200/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg',
-                fit: BoxFit.cover,
+            Visibility(
+              visible: _homeController.popularMoviesList != null,
+              replacement: Container(),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount:
+                    _homeController.popularMoviesList.value.results?.length,
+                itemBuilder: (context, index) {
+                  MovieModel popularMovies =
+                      _homeController.popularMoviesList.value.results![1];
+
+                  return Expanded(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
               ),
-            )
+            ),
           ],
         ),
         /*  Center(

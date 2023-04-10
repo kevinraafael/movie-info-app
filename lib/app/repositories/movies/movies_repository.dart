@@ -29,19 +29,6 @@ class MoviesRepository {
     }
   }
 
-  Future getMovieImage() async {
-    try {
-      var response = await dioImage.get(
-        '',
-        queryParameters: {},
-      );
-      log(response.data);
-      return (response.data);
-    } catch (e) {
-      log(e.toString());
-    }
-  }
-
   Future getPopularMovies() async {
     try {
       var response = await dioMovie.get(
@@ -53,6 +40,19 @@ class MoviesRepository {
       );
 
       return PopularMoviesModel.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future getMovieImage() async {
+    try {
+      var response = await dioImage.get(
+        '',
+        queryParameters: {},
+      );
+      log(response.data);
+      return (response.data);
     } catch (e) {
       log(e.toString());
     }
