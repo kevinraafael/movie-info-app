@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_info_app/app/models/popular_movies_model.dart';
+
+import '../../core/config/theme_config.dart';
 import '../../core/theme/typography_theme.dart';
 import '../../models/movie_model.dart';
-import '../../core/config/theme_config.dart';
-import '../../repositories/movies/movies_repository.dart';
-
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,20 +21,9 @@ class _HomePageState extends State<HomePage> {
 
   String imageTest = '';
   final _homeController = Get.put(HomeController());
-  var movieModel = MovieModel();
-  var popularMovies = PopularMoviesModel();
-  test() async {
-    final MoviesRepository moviesRepository = Get.find();
-    movieModel = await moviesRepository.getMovieInfo(100088);
-    //Traz a imagem imageTest = await moviesRepository.getMovieImage();
-    movieModel;
-
-    popularMovies;
-  }
 
   @override
   Widget build(BuildContext context) {
-    test();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -44,12 +31,6 @@ class _HomePageState extends State<HomePage> {
           style: headerHomeStyle.copyWith(),
         ),
       ),
-      /*  bottomSheet: Container(
-        color: Theme.of(context).colorScheme.primaryColor,
-        child: const Divider(
-          thickness: 1,
-        ),
-      ), */
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
@@ -101,27 +82,40 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 21,
             ),
-            Visibility(
-              visible: _homeController.popularMoviesList != null,
-              replacement: Container(),
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount:
-                    _homeController.popularMoviesList.value.results?.length,
-                itemBuilder: (context, index) {
-                  MovieModel popularMovies =
-                      _homeController.popularMoviesList.value.results![1];
-
-                  return Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
-                        fit: BoxFit.cover,
-                      ),
+            Obx(
+              () => Container(
+                height: MediaQuery.of(context).size.width,
+                child: Visibility(
+                  visible: !_homeController.loader.value,
+                  replacement: Container(
+                    width: 30,
+                    height: 30,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
                     ),
-                  );
-                },
+                  ),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount:
+                        _homeController.popularMoviesList.value.results?.length,
+                    itemBuilder: (context, index) {
+                      MovieModel popularMovies = _homeController
+                          .popularMoviesList.value.results![index];
+
+                      return Container(
+                        margin: const EdgeInsetsDirectional.only(end: 20),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.network(
+                            'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
             ),
           ],
