@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:movie_info_app/app/models/popular_movies_model.dart';
 
 import '../../repositories/movies/movies_repository.dart';
+import '../../routes/app_routes.dart';
 
 class HomeController extends GetxController {
   final MoviesRepository moviesRepository = Get.find();
@@ -23,5 +24,17 @@ class HomeController extends GetxController {
       loader.value = false;
     }
     loader.value = false;
+  }
+
+  void changePage(int value) {
+    switch (value) {
+      case 0:
+        break;
+      case 1:
+        Get.toNamed(AppRoutes.movieDetails);
+        break;
+      case 2:
+        break;
+    }
   }
 }

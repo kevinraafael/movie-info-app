@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) => _homeController.changePage(value),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
