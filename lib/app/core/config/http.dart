@@ -22,7 +22,6 @@ class Http implements HttpInterface {
   @override
   Future get(String endpoint,
       {required Map<String, dynamic> queryParameters}) async {
-    // TODO: implement get
     try {
       return await dio.get(endpoint, queryParameters: queryParameters);
     } on DioError catch (e) {
@@ -34,22 +33,4 @@ class Http implements HttpInterface {
       throw (response);
     }
   }
-
-  // @override
-  // Future post(String endpoint, {required Map<String, dynamic> data}) {
-  //   // TODO: implement post
-  //   throw UnimplementedError();
-  // }
-
-  // @override
-  // Future put(String endpoint, {required Map<String, dynamic> data}) {
-  //   // TODO: implement put
-  //   throw UnimplementedError();
-  // }
-
-  // @override
-  // Future delete(String endpoint, {required Map<String, dynamic> data}) {
-  //   // TODO: implement delete
-  //   throw UnimplementedError();
-  // }
 }

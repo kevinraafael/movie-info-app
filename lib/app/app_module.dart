@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
-import '../../core/config/env_config.dart';
-import '../../core/config/http_interceptor.dart';
-import '../../repositories/movies/movies_repository.dart';
-import 'home_controller.dart';
+import 'core/config/env_config.dart';
+import 'core/config/http_interceptor.dart';
+import 'repositories/movies/movies_repository.dart';
+import 'modules/home/home_controller.dart';
 
-class HomeBinding extends Bindings {
+class AppModule extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HomeController());

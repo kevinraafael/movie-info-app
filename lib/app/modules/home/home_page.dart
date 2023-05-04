@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) => _homeController.changePage(value),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(
@@ -83,11 +84,11 @@ class _HomePageState extends State<HomePage> {
               height: 21,
             ),
             Obx(
-              () => Container(
+              () => SizedBox(
                 height: MediaQuery.of(context).size.width,
                 child: Visibility(
                   visible: !_homeController.loader.value,
-                  replacement: Container(
+                  replacement: const SizedBox(
                     width: 30,
                     height: 30,
                     child: CircularProgressIndicator(
