@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_info_app/app/modules/home/widgets/counter_movie_widget.dart';
 
 import '../../core/config/theme_config.dart';
 import '../../core/theme/typography_theme.dart';
@@ -84,17 +85,17 @@ class _HomePageState extends State<HomePage> {
               height: 21,
             ),
             Obx(
-              () => SizedBox(
-                height: MediaQuery.of(context).size.width,
-                child: Visibility(
-                  visible: !_homeController.loader.value,
-                  replacement: const SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
-                    ),
+              () => Visibility(
+                visible: !_homeController.loader.value,
+                replacement: const SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
                   ),
+                ),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.25,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -106,12 +107,25 @@ class _HomePageState extends State<HomePage> {
 
                       return Container(
                         margin: const EdgeInsetsDirectional.only(end: 20),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.network(
-                            'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
-                            fit: BoxFit.cover,
-                          ),
+                        child: Stack(
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.20,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.network(
+                                  'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              child: CounterMovieWidget(
+                                itemNumber: (index + 1).toString(),
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
@@ -119,31 +133,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            Row(
+              children: const [Text('Now Playing')],
+            )
           ],
         ),
-        /*  Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Tela em construção',
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              Obx(() => Text(
-                    '${_homeController.counter.value}',
-                  )),
-            ],
-          ),
-        ), */
       ),
-      /* floatingActionButton: FloatingActionButton(
-        onPressed: _homeController.incrementCounter, //_incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), */
     );
   }
 }
