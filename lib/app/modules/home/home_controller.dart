@@ -8,6 +8,8 @@ class HomeController extends GetxController {
   final MoviesRepository moviesRepository = Get.find();
   final popularMoviesList = PopularMoviesModel().obs;
   final loader = false.obs;
+  final needDivider = false.obs;
+  Rx<bool> isCategorySelected = false.obs;
   //Rx<PopularMoviesModel> popularMovies = PopularMoviesModel().obs;
 
   @override

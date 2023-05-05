@@ -55,7 +55,8 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Padding(
+      body: Container(
+        width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
@@ -133,8 +134,102 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            //Melhorar esse Widget
             Row(
-              children: const [Text('Now Playing')],
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () => print('s'),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Filmes em \nCartaz',
+                        style: categoryHomeStyle,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        child: const Divider(
+                          thickness: 5,
+                          height: 1,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: () => print('object'),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Filmes bem \n avaliados',
+                        style: categoryHomeStyle,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        child: const Divider(
+                          thickness: 5,
+                          height: 1,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      'Séries \nPopulares',
+                      style: categoryHomeStyle,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      child: const Divider(
+                        thickness: 5,
+                        height: 1,
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 13,
+                  mainAxisSpacing: 18,
+                ),
+                itemCount:
+                    _homeController.popularMoviesList.value.results!.length,
+                itemBuilder: (context, index) {
+                  MovieModel popularMovies =
+                      _homeController.popularMoviesList.value.results![index];
+
+                  return Container(
+                    margin: const EdgeInsetsDirectional.only(end: 20),
+                    child: SizedBox(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.network(
+                          'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             )
           ],
         ),
