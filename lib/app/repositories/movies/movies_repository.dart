@@ -45,16 +45,32 @@ class MoviesRepository {
     }
   }
 
-  Future getMovieImage() async {
+  Future getNowPlayingMovies() async {
     try {
-      var response = await dioImage.get(
-        '',
+      var response = await dioMovie.get(
+        '/movie/now_playing?',
         queryParameters: {},
       );
-      log(response.data);
-      return (response.data);
+
+      return PopularMoviesModel.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }
   }
+
+  /* Future getPopularTvShows() async {
+    try {
+      var response = await dioMovie.get(
+        '/tv/popular?',
+        queryParameters: {
+          'sort_by': 'popularity.desc',
+          'include_adult': true,
+        },
+      );
+
+      return PopularMoviesModel.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+    }
+  } */
 }

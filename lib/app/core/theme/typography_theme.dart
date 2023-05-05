@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:movie_info_app/app/core/theme/colors_theme.dart';
 
 class TypographyTheme {
   static const String headerFont = 'Montserrat';
@@ -16,6 +16,7 @@ TextStyle categoryHomeStyle = const TextStyle(
   fontFamily: TypographyTheme.mainFont,
   fontSize: 14,
   fontWeight: FontWeight.w500,
+  color: ColorsTheme.bodyTextColor,
 );
 
 TextStyle bottomMenuStyle = const TextStyle(
