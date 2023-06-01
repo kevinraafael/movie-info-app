@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_info_app/app/modules/home/widgets/counter_movie_widget.dart';
+import 'package:movie_info_app/app/modules/home/widgets/genre_widget.dart';
 
 import '../../core/config/theme_config.dart';
 import '../../core/theme/typography_theme.dart';
@@ -72,9 +73,9 @@ class _HomePageState extends State<HomePage> {
                   Radius.circular(16),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
+                children: [
                   Expanded(child: TextField()),
                   Icon(
                     Icons.search,
@@ -115,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(16),
                                 child: Image.network(
-                                  'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
+                                  'https://image.tmdb.org/t/p/original/${popularMovies.posterPath}',
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -135,75 +136,58 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             //Melhorar esse Widget
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+            GenreWidget(
+              genres: _homeController.genresMovieList.value.genres,
+            ),
+            /*   Row(
               children: [
-                InkWell(
-                  onTap: () => print('s'),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Filmes em \nCartaz',
-                        style: categoryHomeStyle,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.25,
-                        child: const Divider(
-                          thickness: 5,
-                          height: 1,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () => print('object'),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Filmes bem \n avaliados',
-                        style: categoryHomeStyle,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.25,
-                        child: const Divider(
-                          thickness: 5,
-                          height: 1,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      'Séries \nPopulares',
-                      style: categoryHomeStyle,
+                Expanded(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.20,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount:
+                          _homeController.genresMovieList.value.genres?.length,
+                      itemBuilder: (context, index) {
+                        GenreModel genre = _homeController
+                            .genresMovieList.value.genres![index];
+                       
+                        return Row(
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  genre.name!,
+                                  style: categoryHomeStyle,
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.20,
+                                  child: const Divider(
+                                    thickness: 2.5,
+                                    height: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            )
+                          ],
+                        );
+                      },
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.25,
-                      child: const Divider(
-                        thickness: 5,
-                        height: 1,
-                      ),
-                    )
-                  ],
+                  ),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
+            ), */
+
+            /*  Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -230,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-            )
+            ) */
           ],
         ),
       ),

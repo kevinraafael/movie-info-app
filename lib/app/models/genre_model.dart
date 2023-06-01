@@ -1,13 +1,13 @@
-class GenresModel {
+class GenreModel {
   int? id;
   String? name;
 
-  GenresModel({
+  GenreModel({
     this.id,
     this.name,
   });
 
-  GenresModel.fromJson(Map<String, dynamic> json) {
+  GenreModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }

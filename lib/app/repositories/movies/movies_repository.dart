@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../../core/config/http_interceptor.dart';
 
+import '../../models/genres_list_model.dart';
 import '../../models/movie_model.dart';
 import '../../models/popular_movies_model.dart';
 
@@ -58,6 +59,20 @@ class MoviesRepository {
     }
   }
 
+  Future getGenres() async {
+    try {
+      final response =
+          await dioMovie.get('/genre/movie/list?', queryParameters: {});
+      /*  final List<dynamic> genresDynamic = response.data['genres'];
+      List<GenreModel> genres =
+          genresDynamic.map((json) => GenreModel.fromJson(json)).toList();
+      return genres;
+ */
+      return GenresListModel.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
   /* Future getPopularTvShows() async {
     try {
       var response = await dioMovie.get(

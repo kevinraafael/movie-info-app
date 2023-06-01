@@ -1,4 +1,4 @@
-import 'genres_model.dart';
+import 'genre_model.dart';
 
 class MovieModel {
   int? id;
@@ -10,7 +10,7 @@ class MovieModel {
   String? releaseDate;
   String? backdropPath;
   int? budget;
-  List<GenresModel>? genres;
+  List<GenreModel>? genres;
   late bool? adult;
 
   MovieModel({
