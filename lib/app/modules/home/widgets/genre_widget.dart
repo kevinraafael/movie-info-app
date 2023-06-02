@@ -18,7 +18,8 @@ class GenreWidget extends StatelessWidget {
       children: [
         Expanded(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.20,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.05,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
@@ -28,6 +29,7 @@ class GenreWidget extends StatelessWidget {
                 return Row(
                   children: [
                     Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           genre.name!,
