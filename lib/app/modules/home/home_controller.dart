@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:movie_info_app/app/models/genres_list_model.dart';
-import 'package:movie_info_app/app/models/popular_movies_model.dart';
 
+import '../../models/genres_list_model.dart';
+import '../../models/popular_movies_model.dart';
 import '../../repositories/movies/movies_repository.dart';
 import '../../routes/app_routes.dart';
 

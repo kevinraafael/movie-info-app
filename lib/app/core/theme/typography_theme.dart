@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/app/core/theme/colors_theme.dart';
+import 'colors_theme.dart';
 
 class TypographyTheme {
   static const String headerFont = 'Montserrat';

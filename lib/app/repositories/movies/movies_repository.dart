@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import '../../core/config/http_interceptor.dart';
 
+import '../../core/config/http_interceptor.dart';
 import '../../models/genres_list_model.dart';
 import '../../models/movie_model.dart';
 import '../../models/popular_movies_model.dart';

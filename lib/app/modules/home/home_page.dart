@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_info_app/app/modules/home/widgets/counter_movie_widget.dart';
-import 'package:movie_info_app/app/modules/home/widgets/genre_widget.dart';
+import 'widgets/genre_widget.dart';
+import 'widgets/popular_movies_widget.dart';
 
 import '../../core/config/theme_config.dart';
 import '../../core/theme/typography_theme.dart';
-import '../../models/movie_model.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -100,48 +99,12 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                     ),
                   ),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemCount: _homeController
-                          .popularMoviesList.value.results?.length,
-                      itemBuilder: (context, index) {
-                        MovieModel popularMovies = _homeController
-                            .popularMoviesList.value.results![index];
-
-                        return Container(
-                          margin: const EdgeInsetsDirectional.only(end: 20),
-                          child: Stack(
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.20,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(16),
-                                  child: Image.network(
-                                    'https://image.tmdb.org/t/p/original/${popularMovies.posterPath}',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                child: CounterMovieWidget(
-                                  itemNumber: (index + 1).toString(),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                  child: PopularMoviesWidget(
+                    popularMoviesModel:
+                        _homeController.popularMoviesList.value.results,
                   ),
                 ),
               ),
-              //Melhorar esse Widget
-
               Obx(
                 () => Visibility(
                   visible: !_homeController.loader.value &&
@@ -151,81 +114,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              /*   Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.20,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount:
-                            _homeController.genresMovieList.value.genres?.length,
-                        itemBuilder: (context, index) {
-                          GenreModel genre = _homeController
-                              .genresMovieList.value.genres![index];
-                         
-                          return Row(
-                            children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    genre.name!,
-                                    style: categoryHomeStyle,
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.20,
-                                    child: const Divider(
-                                      thickness: 2.5,
-                                      height: 1,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              )
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ), */
-
-              /*  Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 13,
-                    mainAxisSpacing: 18,
-                  ),
-                  itemCount:
-                      _homeController.popularMoviesList.value.results!.length,
-                  itemBuilder: (context, index) {
-                    MovieModel popularMovies =
-                        _homeController.popularMoviesList.value.results![index];
-      
-                    return Container(
-                      margin: const EdgeInsetsDirectional.only(end: 20),
-                      child: SizedBox(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.network(
-                            'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ) */
             ],
           ),
         ),
