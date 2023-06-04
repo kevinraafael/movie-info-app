@@ -6,4 +6,5 @@ class ColorsTheme {
   static const unselectedItem = Color(0xFF67686D);
   static const selectedItem = Color(0xFFF9A71F);
   static const inputBackground = Color(0xFF3A3F47);
+  static const bodyTextColor = Color(0xffFFFFFF);
 }

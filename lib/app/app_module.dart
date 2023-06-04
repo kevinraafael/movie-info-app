@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import 'core/config/env_config.dart';
 import 'core/config/http_interceptor.dart';
-import 'repositories/movies/movies_repository.dart';
 import 'modules/home/home_controller.dart';
+import 'repositories/movies/movies_repository.dart';
 
 class AppModule extends Bindings {
   @override

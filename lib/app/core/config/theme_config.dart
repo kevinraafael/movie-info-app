@@ -13,6 +13,16 @@ class ThemeConfig {
           elevation: 0,
         ),
         scaffoldBackgroundColor: ColorsTheme.primaryColor,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            color: ColorsTheme.bodyTextColor,
+          ),
+        ),
+        primaryTextTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            color: ColorsTheme.bodyTextColor,
+          ),
+        ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           selectedLabelStyle: bottomMenuStyle,
           unselectedLabelStyle: bottomMenuStyle,
@@ -22,7 +32,7 @@ class ThemeConfig {
           elevation: 0,
         ),
         dividerTheme: const DividerThemeData(
-          color: ColorsTheme.highlightedItem,
+          color: ColorsTheme.inputBackground,
         ),
       );
 }
@@ -33,4 +43,6 @@ extension CustomColors on ColorScheme {
   Color get inputSearchBackgroundColor => brightness == Brightness.light
       ? ColorsTheme.inputBackground
       : Colors.grey;
+  Color get defaultFontColor =>
+      brightness == Brightness.light ? ColorsTheme.bodyTextColor : Colors.grey;
 }

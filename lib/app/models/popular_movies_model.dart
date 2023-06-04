@@ -1,4 +1,4 @@
-import 'package:movie_info_app/app/models/movie_model.dart';
+import 'movie_model.dart';
 
 class PopularMoviesModel {
   int? page;
