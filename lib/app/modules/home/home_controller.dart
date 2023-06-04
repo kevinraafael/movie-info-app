@@ -11,11 +11,10 @@ class HomeController extends GetxController {
   final MoviesRepository moviesRepository = Get.find();
   final popularMoviesList = PopularMoviesModel().obs;
   final genresMovieList = GenresListModel().obs;
-
   final loader = false.obs;
   final needDivider = false.obs;
+  List<bool> isImageLoaded = [false].obs;
   Rx<bool> isCategorySelected = false.obs;
-  //Rx<PopularMoviesModel> popularMovies = PopularMoviesModel().obs;
 
   @override
   void onInit() async {
