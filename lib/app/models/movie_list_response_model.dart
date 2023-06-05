@@ -1,19 +1,19 @@
 import 'movie_model.dart';
 
-class PopularMoviesModel {
+class MovieListResponseModel {
   int? page;
   List<MovieModel>? results;
   int? totalResults;
   int? totalPages;
 
-  PopularMoviesModel({
+  MovieListResponseModel({
     this.page,
     this.results,
     this.totalResults,
     this.totalPages,
   });
 
-  PopularMoviesModel.fromJson(Map<String, dynamic> json) {
+  MovieListResponseModel.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     results = List<MovieModel>.from(json['results'].map(
       (value) => MovieModel.fromJson(value),

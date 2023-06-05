@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 
 import '../../core/config/http_interceptor.dart';
 import '../../models/genres_list_model.dart';
+import '../../models/movie_list_response_model.dart';
 import '../../models/movie_model.dart';
-import '../../models/popular_movies_model.dart';
 
 class MoviesRepository {
   final Dio dioMovie;
@@ -40,7 +40,7 @@ class MoviesRepository {
         },
       );
 
-      return PopularMoviesModel.fromJson(response.data);
+      return MovieListResponseModel.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }
@@ -53,7 +53,7 @@ class MoviesRepository {
         queryParameters: {},
       );
 
-      return PopularMoviesModel.fromJson(response.data);
+      return MovieListResponseModel.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }
@@ -69,6 +69,18 @@ class MoviesRepository {
       return genres;
  */
       return GenresListModel.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future getMoviesWithSpecificGenre({
+    required String genreId,
+  }) async {
+    try {
+      final response = await dioMovie
+          .get('/discover/movie?&with_genres=$genreId', queryParameters: {});
+      return MovieListResponseModel.fromJson(response.data);
     } catch (e) {
       log(e.toString());
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'widgets/genre_widget.dart';
+import 'widgets/grid_view_movies_widget.dart';
+import '../../models/genre_model.dart';
 import 'widgets/popular_movies_widget.dart';
 
 import '../../core/config/theme_config.dart';
@@ -109,8 +110,79 @@ class _HomePageState extends State<HomePage> {
                 () => Visibility(
                   visible: !_homeController.loader.value &&
                       !(_homeController.genresMovieList.value.genres == null),
-                  child: GenreWidget(
-                    genres: _homeController.genresMovieList.value.genres,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: _homeController
+                                .genresMovieList.value.genres?.length,
+                            itemBuilder: (context, index) {
+                              final genres =
+                                  _homeController.genresMovieList.value.genres;
+                              GenreModel genre = genres![index];
+
+                              return Row(
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          _homeController.getMoviesCategory(
+                                            genreId: genre.id.toString(),
+                                          );
+                                        },
+                                        child: Text(
+                                          genre.name!,
+                                          style: categoryHomeStyle,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Visibility(
+                                        visible: genre.id == genres[index].id,
+                                        replacement: Container(),
+                                        child: SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.20,
+                                          child: const Divider(
+                                            thickness: 2.5,
+                                            height: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Obx(
+                  () => Visibility(
+                    visible:
+                        _homeController.moviesByGenre.value.results != null,
+                    child: GridViewMoviesWidget(
+                        movies:
+                            _homeController.moviesByGenre.value.results ?? []),
                   ),
                 ),
               ),

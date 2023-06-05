@@ -1,10 +1,12 @@
 class GenreModel {
   int? id;
   String? name;
+  bool? isSelected;
 
   GenreModel({
     this.id,
     this.name,
+    this.isSelected,
   });
 
   GenreModel.fromJson(Map<String, dynamic> json) {

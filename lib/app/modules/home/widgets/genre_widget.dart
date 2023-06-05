@@ -6,9 +6,12 @@ import '../../../models/genre_model.dart';
 class GenreWidget extends StatelessWidget {
   final List<GenreModel>? genres;
   final bool isSelected;
+  final VoidCallback onTap;
+
   const GenreWidget({
     super.key,
     required this.genres,
+    required this.onTap,
     this.isSelected = false,
   });
 
@@ -31,9 +34,12 @@ class GenreWidget extends StatelessWidget {
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          genre.name!,
-                          style: categoryHomeStyle,
+                        InkWell(
+                          onTap: onTap,
+                          child: Text(
+                            genre.name!,
+                            style: categoryHomeStyle,
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
