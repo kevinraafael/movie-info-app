@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   final popularMoviesList = MovieListResponseModel().obs;
   final genresMovieList = GenresListModel().obs;
   final moviesByGenre = MovieListResponseModel().obs;
-
+  RxInt selectedGenreId = RxInt(0);
   final loader = false.obs;
 
   @override
@@ -47,7 +47,10 @@ class HomeController extends GetxController {
     try {
       moviesByGenre.value =
           await moviesRepository.getMoviesWithSpecificGenre(genreId: genreId);
-      moviesByGenre.value;
+
+      selectedGenreId.value = (int.parse(genreId));
+      update([selectedGenreId]);
+      refresh();
     } catch (e) {}
   }
 
