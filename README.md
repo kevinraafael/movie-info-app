@@ -1,6 +1,6 @@
 # movie_info_app
 
-A new Flutter project with 3.7.6 version.
+A new Flutter project with 3.10.0 version.
 
 ## Getting Started
 

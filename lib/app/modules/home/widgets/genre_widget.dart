@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/theme/typography_theme.dart';
 import '../../../models/genre_model.dart';
+import '../home_controller.dart';
 
 class GenreWidget extends StatelessWidget {
   final List<GenreModel>? genres;
   final bool isSelected;
+
   const GenreWidget({
     super.key,
     required this.genres,
@@ -23,31 +26,45 @@ class GenreWidget extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: genres?.length,
+              itemCount: _homeController.genresMovieList.value.genres?.length,
               itemBuilder: (context, index) {
+                final genres = _homeController.genresMovieList.value.genres;
                 GenreModel genre = genres![index];
+
                 return Row(
                   children: [
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          genre.name!,
-                          style: categoryHomeStyle,
+                        InkWell(
+                          onTap: () {
+                            _homeController.getMoviesCategory(
+                              genreId: genre.id.toString(),
+                            );
+                          },
+                          child: Text(
+                            genre.name!,
+                            style: categoryHomeStyle,
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
                         ),
-                        Visibility(
-                          visible: isSelected,
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.20,
-                            child: const Divider(
-                              thickness: 2.5,
-                              height: 1,
+                        Obx(
+                          () => Visibility(
+                            visible: genre.id == genres[index].id &&
+                                _homeController.selectedGenreId.value ==
+                                    genre.id,
+                            replacement: Container(),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.20,
+                              child: const Divider(
+                                thickness: 2.5,
+                                height: 1.2,
+                              ),
                             ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                     const SizedBox(
@@ -63,3 +80,5 @@ class GenreWidget extends StatelessWidget {
     );
   }
 }
+
+final _homeController = Get.put(HomeController());

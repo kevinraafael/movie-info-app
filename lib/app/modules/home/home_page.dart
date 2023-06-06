@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'widgets/genre_widget.dart';
+import 'widgets/grid_view_movies_widget.dart';
 import 'widgets/popular_movies_widget.dart';
 
 import '../../core/config/theme_config.dart';
@@ -111,6 +112,18 @@ class _HomePageState extends State<HomePage> {
                       !(_homeController.genresMovieList.value.genres == null),
                   child: GenreWidget(
                     genres: _homeController.genresMovieList.value.genres,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Obx(
+                  () => Visibility(
+                    visible:
+                        _homeController.moviesByGenre.value.results != null,
+                    child: GridViewMoviesWidget(
+                        movies:
+                            _homeController.moviesByGenre.value.results ?? []),
                   ),
                 ),
               ),
