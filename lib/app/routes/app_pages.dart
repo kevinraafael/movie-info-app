@@ -1,4 +1,4 @@
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 
 import '../app_module.dart';
 import '../modules/home/home_page.dart';
@@ -14,7 +14,9 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.movieDetails,
-      page: () => const MovieDetailsPage(),
+      page: () {
+        return MovieDetailsPage();
+      },
       binding: AppModule(),
     )
   ];

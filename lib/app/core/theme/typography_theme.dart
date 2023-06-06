@@ -25,3 +25,10 @@ TextStyle bottomMenuStyle = const TextStyle(
   fontSize: 12,
   fontWeight: FontWeight.w500,
 );
+
+TextStyle movieDetailTitleStyle = const TextStyle(
+  fontFamily: TypographyTheme.mainFont,
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+  color: ColorsTheme.bodyTextColor,
+);
