@@ -6,7 +6,6 @@ import '../../models/genre_model.dart';
 import '../../models/genres_list_model.dart';
 import '../../models/movie_list_response_model.dart';
 import '../../repositories/movies/movies_repository.dart';
-import '../../routes/app_routes.dart';
 
 class HomeController extends GetxController {
   final MoviesRepository moviesRepository = Get.find();
@@ -69,7 +68,6 @@ class HomeController extends GetxController {
       case 0:
         break;
       case 1:
-        Get.toNamed(AppRoutes.movieDetails);
         break;
       case 2:
         break;

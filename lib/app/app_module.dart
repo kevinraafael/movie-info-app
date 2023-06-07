@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'modules/movie_details/movie_details_controller.dart';
 
 import 'core/config/env_config.dart';
 import 'core/config/http_interceptor.dart';
@@ -10,7 +11,7 @@ class AppModule extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => HomeController());
-
+    Get.lazyPut(() => MovieDetailsController());
     // Get.put((i) => Http(dio: i.get()));
     Get.put<Dio>(
         Dio(

@@ -30,7 +30,7 @@ class GridViewMoviesWidget extends StatelessWidget {
           onTap: () {
             Get.toNamed(
               AppRoutes.movieDetails,
-              arguments: movie,
+              arguments: movie.id,
             );
           },
           child: Container(

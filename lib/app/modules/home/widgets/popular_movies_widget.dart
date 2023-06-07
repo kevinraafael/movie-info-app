@@ -36,7 +36,7 @@ class PopularMoviesWidget extends StatelessWidget {
                     onTap: () {
                       Get.toNamed(
                         AppRoutes.movieDetails,
-                        arguments: popularMovies,
+                        arguments: popularMovies.id,
                       );
                     },
                     child: ClipRRect(
