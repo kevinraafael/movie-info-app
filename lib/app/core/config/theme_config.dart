@@ -45,4 +45,7 @@ extension CustomColors on ColorScheme {
       : Colors.grey;
   Color get defaultFontColor =>
       brightness == Brightness.light ? ColorsTheme.bodyTextColor : Colors.grey;
+  Color get movieFeatureColor => brightness == Brightness.light
+      ? ColorsTheme.movieFeatureColor
+      : Colors.grey;
 }
