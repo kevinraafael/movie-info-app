@@ -3,16 +3,15 @@ import 'package:get/get.dart';
 
 import '../../../core/theme/typography_theme.dart';
 import '../../../models/genre_model.dart';
+
 import '../home_controller.dart';
 
 class GenreWidget extends StatelessWidget {
   final List<GenreModel>? genres;
-  final bool isSelected;
 
   const GenreWidget({
     super.key,
     required this.genres,
-    this.isSelected = false,
   });
 
   @override

@@ -32,3 +32,10 @@ TextStyle movieDetailTitleStyle = const TextStyle(
   fontWeight: FontWeight.w600,
   color: ColorsTheme.bodyTextColor,
 );
+
+TextStyle movieFeatureStyle = const TextStyle(
+  fontFamily: TypographyTheme.headerFont,
+  fontSize: 12,
+  fontWeight: FontWeight.w500,
+  color: ColorsTheme.movieFeatureColor,
+);
