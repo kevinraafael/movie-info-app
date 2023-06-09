@@ -47,13 +47,13 @@ class _HomePageState extends State<HomePage> {
               Icons.search,
             ),
             label: "Procurar",
-          ),
+          ), /*
           BottomNavigationBarItem(
             icon: Icon(
               Icons.list_rounded,
             ),
             label: 'Lista',
-          )
+          )*/
         ],
       ),
       body: SingleChildScrollView(

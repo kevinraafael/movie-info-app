@@ -7,4 +7,5 @@ class ColorsTheme {
   static const selectedItem = Color(0xFFF9A71F);
   static const inputBackground = Color(0xFF3A3F47);
   static const bodyTextColor = Color(0xffFFFFFF);
+  static const movieFeatureColor = Color(0xFF92929D);
 }

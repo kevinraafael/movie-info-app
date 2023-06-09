@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import '../../../models/movie_model.dart';
+import '../../../routes/app_routes.dart';
 import 'counter_movie_widget.dart';
 
 class PopularMoviesWidget extends StatelessWidget {
@@ -29,21 +32,29 @@ class PopularMoviesWidget extends StatelessWidget {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.20,
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: //isImageLoaded[index]?
-                          Container(
-                        color: Colors.grey[50],
-                        child: CachedNetworkImage(
-                          memCacheWidth: 294,
-                          memCacheHeight: 441,
-                          imageUrl:
-                              'https://image.tmdb.org/t/p/original/${popularMovies.posterPath}',
-                          fit: BoxFit.cover,
+                  child: InkWell(
+                    onTap: () {
+                      Get.toNamed(
+                        AppRoutes.movieDetails,
+                        arguments: popularMovies.id,
+                      );
+                    },
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: //isImageLoaded[index]?
+                            Container(
+                          color: Colors.grey[50],
+                          child: CachedNetworkImage(
+                            memCacheWidth: 294,
+                            memCacheHeight: 441,
+                            imageUrl:
+                                'https://image.tmdb.org/t/p/w200/${popularMovies.posterPath}',
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                        // : const CircularProgressIndicator(),
                         ),
-                      )
-                      // : const CircularProgressIndicator(),
-                      ),
+                  ),
                 ),
                 Positioned(
                   bottom: 0,

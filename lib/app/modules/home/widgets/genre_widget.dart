@@ -7,12 +7,10 @@ import '../home_controller.dart';
 
 class GenreWidget extends StatelessWidget {
   final List<GenreModel>? genres;
-  final bool isSelected;
 
   const GenreWidget({
     super.key,
     required this.genres,
-    this.isSelected = false,
   });
 
   @override

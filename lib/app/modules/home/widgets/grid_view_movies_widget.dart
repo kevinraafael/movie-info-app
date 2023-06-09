@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../models/movie_model.dart';
+import '../../../routes/app_routes.dart';
 
 class GridViewMoviesWidget extends StatelessWidget {
   final List<MovieModel> movies;
@@ -24,17 +26,25 @@ class GridViewMoviesWidget extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         MovieModel movie = movies[index];
-        return Container(
-          margin: const EdgeInsetsDirectional.only(end: 20),
-          child: SizedBox(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: CachedNetworkImage(
-                  memCacheWidth: 237,
-                  memCacheHeight: 292,
-                  imageUrl:
-                      'https://image.tmdb.org/t/p/original/${movie.posterPath}',
-                  fit: BoxFit.cover),
+        return InkWell(
+          onTap: () {
+            Get.toNamed(
+              AppRoutes.movieDetails,
+              arguments: movie.id,
+            );
+          },
+          child: Container(
+            margin: const EdgeInsetsDirectional.only(end: 20),
+            child: SizedBox(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: CachedNetworkImage(
+                    memCacheWidth: 237,
+                    memCacheHeight: 292,
+                    imageUrl:
+                        'https://image.tmdb.org/t/p/original/${movie.posterPath}',
+                    fit: BoxFit.cover),
+              ),
             ),
           ),
         );

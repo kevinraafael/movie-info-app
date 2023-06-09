@@ -38,11 +38,13 @@ class MovieModel {
     releaseDate = json['release_date'];
     backdropPath = json['backdrop_path'];
     budget = json['budget'];
-    /*  genres = List<GenresModel>.from(
-      json['genres'].map(
-        (value) => GenresModel.fromJson(value),
-      ),
-    ); */
+    if (json['genres'] != null) {
+      genres = List<GenreModel>.from(
+        json['genres'].map(
+          (value) => GenreModel.fromJson(value),
+        ),
+      );
+    }
   }
 
   Map<String, dynamic> toJson() => {
