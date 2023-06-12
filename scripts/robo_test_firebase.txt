@@ -1,0 +1,8 @@
+
+scroll_right
+wait 5000
+scroll_down
+wait 3000
+scroll_up
+wait 5000
+

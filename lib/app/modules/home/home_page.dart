@@ -29,9 +29,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'O que você deseja assistir? ',
+          'FilmPedia',
           style: headerHomeStyle.copyWith(),
         ),
+        centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) => _homeController.changePage(value),
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Column(
             children: [
-              Container(
+              /*  Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 17,
                 ),
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-              ),
+              ), */
               const SizedBox(
                 height: 21,
               ),
