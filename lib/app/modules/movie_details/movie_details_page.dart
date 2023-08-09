@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rive/rive.dart';
 import '../../core/shared/app_icons_widget.dart';
 import '../../core/theme/icons_theme.dart';
 import 'widgets/movie_poster_image_widget.dart';
@@ -43,11 +44,13 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                 visible: !_movieDetailController.loader.value,
                 replacement: Container(
                   alignment: Alignment.center,
-                  margin: EdgeInsets.symmetric(
-                      vertical: MediaQuery.of(context).size.height * 0.3),
-                  child: const CircularProgressIndicator(
-                    color: Colors.white,
-                  ),
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  width: MediaQuery.of(context).size.height * 0.5,
+                  // margin: EdgeInsets.symmetric(
+                  //     vertical: MediaQuery.of(context).size.height * 0.3),
+                  child: Container(
+                      child:
+                          RiveAnimation.asset('assets/icons/movie_loader.riv')),
                 ),
                 child: MoviePosterImageWidget(
                     movie: _movieDetailController.movie.value),
